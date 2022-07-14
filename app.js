@@ -1,6 +1,5 @@
 const dom = {
   items: document.querySelectorAll(".item"),
-  texts: document.querySelectorAll(".item__text"),
 };
 
 const hideItems = () => {

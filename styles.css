@@ -13,7 +13,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: Roboto, sans-serif;
   font-size: 15px;
   line-height: 24px;
 }
@@ -51,22 +51,40 @@ picture {
   padding: 0;
 }
 
+p {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
 .vHidden {
   position: absolute;
   width: 1px;
   height: 1px;
-  margin: -1px;
-  padding: 0;
   overflow: hidden;
+  margin: -1px;
   border: 0;
+  padding: 0;
   clip: rect(0 0 0 0);
 }
 
 .container {
   width: 100%;
   max-width: 1620px;
-  padding: 0 10px;
   margin: 0 auto;
+  padding: 0 10px;
+}
+
+/* simple slide in */
+@keyframes slide {
+  0% {
+    margin-left: -50%;
+    opacity: 0;
+  }
+
+  100% {
+    margin-left: inherit;
+    opacity: 1;
+  }
 }
 
 /* main */
@@ -80,6 +98,7 @@ picture {
   gap: 80px;
   padding-top: 100px;
 }
+
 .main__heading {
   font-weight: 400;
   font-size: 64px;
@@ -96,27 +115,27 @@ picture {
 
 .list__item {
   position: relative;
-  padding: 20px 0;
+  padding: 30px 0;
 }
 
 .list__item:last-child::after {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
   content: "";
   display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
   height: 1px;
   background: var(--divider);
 }
 
 .list__item::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
   content: "";
   display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
   height: 1px;
   background: var(--divider);
 }
@@ -127,12 +146,12 @@ picture {
 }
 
 .item--active {
-  transition: all 3s ease-in-out;
 }
 
 .item.item--active .item__title {
   color: var(--tertiary);
 }
+
 .item.item--active .item__button {
   align-self: start;
   transform: rotate(45deg);
@@ -140,9 +159,13 @@ picture {
 
 .item.item--active .item__text {
   display: block;
+  animation: slide 0.2s ease-in;
 }
 
 .item__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .item__title {
@@ -166,13 +189,14 @@ picture {
 
 .item__button {
   margin-left: auto;
+  transition: all 0.2s ease-in-out;
 }
 
 .button {
   display: flex;
+  border: none;
   padding: 0;
   background: transparent;
-  border: none;
   cursor: pointer;
 }
 
@@ -192,9 +216,18 @@ picture {
     gap: 60px;
   }
 
+  .list__item {
+    padding: 24px 0;
+  }
+
+  .item__inner {
+    gap: 20px;
+  }
+
   .item__title {
     font-size: 27px;
   }
+
   .item__text {
     font-size: 15px;
   }
@@ -213,10 +246,18 @@ picture {
     padding-top: 70px;
     gap: 56px;
   }
+  .list__item {
+    padding: 20px 0;
+  }
+
+  .item__inner {
+    gap: 16px;
+  }
 
   .item__title {
     font-size: 24px;
   }
+
   .item__text {
     font-size: 14px;
   }
@@ -231,6 +272,10 @@ picture {
     font-size: 42px;
   }
 
+  .list__item {
+    padding: 24px 0;
+  }
+
   .main__wrapper {
     padding-top: 60px;
     gap: 50px;
@@ -239,6 +284,7 @@ picture {
   .item__title {
     font-size: 27px;
   }
+
   .item__text {
     font-size: 15px;
   }
@@ -250,6 +296,7 @@ picture {
   }
 
   .main__heading {
+    max-width: 190px;
     font-size: 30px;
   }
 
@@ -258,11 +305,15 @@ picture {
     gap: 40px;
   }
 
+  .list__item {
+    padding: 20px 0;
+  }
+
   .item__title {
     max-width: 289px;
-
     font-size: 24px;
   }
+
   .item__text {
     font-size: 15px;
   }
